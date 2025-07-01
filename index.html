@@ -1,35 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Com Javascript</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 90vh;
+            background: linear-gradient(90deg,rgba(131, 58, 180, 1) 25%, rgba(253, 29, 29, 0.81) 59%, rgba(252, 176, 69, 0.84) 100%);
+            font-family: sans-serif;
+        }
+        .Calculadora {
+            border: 2px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 2px 5px 25px whitesmoke;
+            width: 350px;
+            align-items: center;
+        }
+        .visor {
+            background-color: #222;
+            color: white;
+            font-size: 2.5em;
+            padding: 20px;
+            text-align: right;
+            min-height: 1.5em;
+            word-wrap: break-word;
+            align-items: center;
+        }
+        .Botoes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+        }
+        button {
+            font-size: 1.5em;
+            padding: 20px;
+            border: none;
+            background-color: #e0e0e0;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d0d0d0;
+        }
+        .operador {
+            background-color: #f59e0b; /* Laranja para operadores */
+            color: white;
+        }
+        .operador:hover {
+            background-color: #d97706;
+        }
+        .limpar {
+            grid-column: span 2;
+        }
+        /* Classe para feedback visual quando um operador está ativo */
+        .pressionado {
+            background-color: #d97706;
+        }
+        .imgJS{
+           width: 15%;
+           box-shadow: 5px 1px 20px rgb(236, 197, 123);
+           border-radius: 10px;
+        }
+        .titulo{
+            font-weight: 400;
+            font-size: 40px;
+            opacity: 0.9;
+            font-family: "Quicksand", sans-serif;
+        }
+    </style>
 </head>
 <body>
+    <div>
+        <h1  class="titulo">
+            <em>Calculadora Com</em> 
+        </h1>
+        <img src="img/javascript.png" class="imgJS">
+    </div>
+    
     <div class="Calculadora">
-        <div class="Interface">
-            <h5 class="display">0</h5>
-        </div>
-        <div class="Botoes" style="display: grid;">
-            <button>9</button>
-            <button>8</button>
+        <div class="visor">0</div>
+        <div class="Botoes">
+            <!-- Linha 1 -->
+            <button class="limpar" data-action="limpar">AC</button>
+            <button class="operador" data-action="divisao">÷</button>
+            <button class="operador" data-action="multiplicacao">×</button>
+            
+            <!-- Linha 2 -->
             <button>7</button>
-            <button>6</button>
-            <button>5</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="operador" data-action="subtracao">-</button>
+            
+            <!-- Linha 3 -->
             <button>4</button>
-            <button>3</button>
-            <button>2</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="operador" data-action="soma">+</button>
+
+            <!-- Linha 4 e 5 -->
             <button>1</button>
-            <button>0</button>
-            <button id="decimal">.</button>
-            <button id="clear">AC</button>
-            <button id="calcule">=</button>
-            <button id="soma">+</button>
-            <button id="subtracao">-</button>
-            <button id="multiplicacao">*</button>
-            <button id="divisao">/</button>
+            <button>2</button>
+            <button>3</button>
+            <button data-action="calcular" class="operador" style="grid-row: span 2;">=</button>
+
+            <button style="grid-column: span 2;">0</button>
+            <button data-action="decimal">.</button>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>
